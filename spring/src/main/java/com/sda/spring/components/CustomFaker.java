@@ -1,6 +1,7 @@
 package com.sda.spring.components;
 
 import com.github.javafaker.Faker;
+import com.sda.spring.model.Company;
 import com.sda.spring.model.Employee;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,23 @@ public class CustomFaker {
         }
 
         return dummyEmployee;
+    }
+
+    public List<Company> createDummyCompanyList(){
+        Faker faker = new Faker();
+        List<Company> dummyCompany = new ArrayList<Company>();
+
+        for (int i =0; i<100; i++){
+            Company company = new Company();
+            company.setName(faker.company().name());
+            company.setAddress(faker.address().fullAddress());
+            company.setEmail(faker.bothify("??????#?#@gmail.com"));
+            company.setPhoneNumber(faker.phoneNumber().phoneNumber());
+            company.setRegistrationNumber(faker.number().randomNumber(8, true));
+            dummyCompany.add(company);
+
+        }
+        return dummyCompany;
     }
 
 }

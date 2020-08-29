@@ -25,7 +25,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/getById")
-    public ResponseEntity<Employee> getById(Integer id){
+    public ResponseEntity<Employee> getById(@RequestParam Integer id){
         return ResponseEntity.ok(employeeService.getById(id));
     }
 

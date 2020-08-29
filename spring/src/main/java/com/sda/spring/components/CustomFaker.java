@@ -2,10 +2,12 @@ package com.sda.spring.components;
 
 import com.github.javafaker.Faker;
 import com.sda.spring.model.Employee;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CustomFaker {
 
     public List<Employee> createDummyEmployeeList(){

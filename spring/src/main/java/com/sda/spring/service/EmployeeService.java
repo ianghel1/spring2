@@ -8,6 +8,8 @@ public interface EmployeeService{
 
     Employee create(Employee employee);
 
+    List<Employee> saveAll(List<Employee> employeeList);
+
     Employee getById(Integer id);
 
     List<Employee> getAll();

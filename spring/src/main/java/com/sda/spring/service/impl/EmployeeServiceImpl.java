@@ -21,6 +21,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public List<Employee> saveAll(List<Employee> employeeList) {
+
+        return (List<Employee>) employeeRepository.saveAll(employeeList);
+    }
+
+    @Override
     public Employee getById(Integer id) {
         Optional<Employee> foundEmployee =  employeeRepository.findById(id);
 

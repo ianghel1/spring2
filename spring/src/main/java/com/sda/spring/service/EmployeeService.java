@@ -12,6 +12,6 @@ public interface EmployeeService{
 
     Employee getById(Integer id);
 
-    List<Employee> getAll();
+    List<Employee> getAll(Integer pageNo, Integer pageSize, String sortBy);
 
 }

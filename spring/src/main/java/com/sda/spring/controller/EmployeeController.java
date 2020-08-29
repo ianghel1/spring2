@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.PreUpdate;
 import java.util.List;
 
 @RestController
@@ -20,22 +21,25 @@ public class EmployeeController {
     private CustomFaker customFaker;
 
     @PostMapping("/save")
-    public ResponseEntity<Employee> create(@RequestBody Employee employee){
+    public ResponseEntity<Employee> create(@RequestBody Employee employee) {
         return ResponseEntity.ok(employeeService.create(employee));
     }
 
     @GetMapping("/getById")
-    public ResponseEntity<Employee> getById(@RequestParam Integer id){
+    public ResponseEntity<Employee> getById(@RequestParam Integer id) {
         return ResponseEntity.ok(employeeService.getById(id));
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Employee>> getAll(){
-        return ResponseEntity.ok(employeeService.getAll());
+    public ResponseEntity<List<Employee>> getAll(
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "id") String sortBy) {
+        return ResponseEntity.ok(employeeService.getAll(pageNo, pageSize, sortBy));
     }
 
     @GetMapping("/populate")
-    public void faker(){
+    public void faker() {
         employeeService.saveAll(customFaker.createDummyEmployeeList());
     }
 

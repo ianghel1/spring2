@@ -4,7 +4,12 @@ import com.sda.spring.model.Employee;
 import com.sda.spring.repository.EmployeeRepository;
 import com.sda.spring.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -33,9 +38,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return foundEmployee.get();
     }
 
-    @Override
-    public List<Employee> getAll() {
 
-        return (List<Employee>) employeeRepository.findAll();
+    @Override
+    public List<Employee> getAll(Integer pageNo, Integer pageSize, String sortBy) {
+        Pageable pageable =  PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        Page<Employee> pageResult = employeeRepository.findAll(pageable);
+        return pageResult.getContent();
     }
 }

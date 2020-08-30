@@ -33,15 +33,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getById(Integer id) {
-        Optional<Employee> foundEmployee =  employeeRepository.findById(id);
+        Optional<Employee> foundEmployee = employeeRepository.findById(id);
 
         return foundEmployee.get();
+    }
+
+    @Override
+    public List<Employee> getByName(String firstName, String lastName) {
+
+        return employeeRepository.findAllByFirstNameAndLastName(firstName, lastName);
     }
 
 
     @Override
     public List<Employee> getAll(Integer pageNo, Integer pageSize, String sortBy) {
-        Pageable pageable =  PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         Page<Employee> pageResult = employeeRepository.findAll(pageable);
         return pageResult.getContent();
     }

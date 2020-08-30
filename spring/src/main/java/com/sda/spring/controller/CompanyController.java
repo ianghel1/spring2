@@ -3,7 +3,6 @@ package com.sda.spring.controller;
 
 import com.sda.spring.components.CustomFaker;
 import com.sda.spring.model.Company;
-import com.sda.spring.model.Employee;
 import com.sda.spring.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

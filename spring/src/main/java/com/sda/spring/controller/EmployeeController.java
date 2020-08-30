@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.PreUpdate;
 import java.util.List;
 
 @RestController
@@ -41,6 +40,14 @@ public class EmployeeController {
     @GetMapping("/populate")
     public void faker() {
         employeeService.saveAll(customFaker.createDummyEmployeeList());
+    }
+
+    @GetMapping("/findByName")
+    public ResponseEntity<List<Employee>> getByName(
+            @RequestParam String firstName,
+            @RequestParam String lastName) {
+
+        return ResponseEntity.ok(employeeService.getByName(firstName, lastName));
     }
 
 

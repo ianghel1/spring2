@@ -17,11 +17,14 @@ import java.util.List;
 @RequestMapping("/api/v1/company")
 public class CompanyController {
 
-    @Autowired
     private CompanyService companyService;
+    private CustomFaker customFaker;
 
     @Autowired
-    private CustomFaker customFaker;
+    public CompanyController(CompanyService companyService, CustomFaker customFaker){
+        this.companyService = companyService;
+        this.customFaker = customFaker;
+    }
 
     @PostMapping("/save")
     public ResponseEntity<CompanyInfoDto> create(@Valid @RequestBody CompanyCreateDto companyCreateDto) {

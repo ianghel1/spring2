@@ -1,12 +1,14 @@
 package com.sda.spring.service;
 
+import com.sda.spring.dto.EmployeeCreateDto;
+import com.sda.spring.dto.EmployeeInfoDto;
 import com.sda.spring.model.Employee;
 
 import java.util.List;
 
 public interface EmployeeService{
 
-    Employee create(Employee employee);
+    EmployeeInfoDto create(EmployeeCreateDto employeeCreateDto);
 
     List<Employee> saveAll(List<Employee> employeeList);
 

@@ -1,9 +1,12 @@
 package com.sda.spring.service.impl;
 
+import com.sda.spring.dto.EmployeeCreateDto;
+import com.sda.spring.dto.EmployeeInfoDto;
 import com.sda.spring.exception.EmployeeNotFoundException;
 import com.sda.spring.model.Employee;
 import com.sda.spring.repository.EmployeeRepository;
 import com.sda.spring.service.EmployeeService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,12 +21,23 @@ import java.util.Optional;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
     private EmployeeRepository employeeRepository;
+    private ModelMapper modelMapper;
+
+    @Autowired
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper){
+        this.employeeRepository = employeeRepository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
-    public Employee create(Employee employee) {
-        return employeeRepository.save(employee);
+    public EmployeeInfoDto create(EmployeeCreateDto employeeCreateDto) {
+        Employee entity = modelMapper.map(employeeCreateDto, Employee.class);
+        Employee resultAfterSave = employeeRepository.save(entity);
+
+        EmployeeInfoDto response = modelMapper.map(resultAfterSave, EmployeeInfoDto.class);
+        return response;
+
     }
 
     @Override

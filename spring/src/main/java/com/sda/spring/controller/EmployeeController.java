@@ -1,6 +1,8 @@
 package com.sda.spring.controller;
 
 import com.sda.spring.components.CustomFaker;
+import com.sda.spring.dto.EmployeeCreateDto;
+import com.sda.spring.dto.EmployeeInfoDto;
 import com.sda.spring.model.Employee;
 import com.sda.spring.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +17,18 @@ import java.util.List;
 @ControllerAdvice
 public class EmployeeController {
 
-    @Autowired
     private EmployeeService employeeService;
-
-    @Autowired
     private CustomFaker customFaker;
 
+    @Autowired
+    public EmployeeController(EmployeeService employeeService, CustomFaker customFaker){
+        this.employeeService = employeeService;
+        this.customFaker = customFaker;
+    }
+
     @PostMapping("/save")
-    public ResponseEntity<Employee> create(@RequestBody Employee employee) {
-        return ResponseEntity.ok(employeeService.create(employee));
+    public ResponseEntity<EmployeeInfoDto> create(@RequestBody  EmployeeCreateDto employeeCreateDto) {
+        return ResponseEntity.ok(employeeService.create(employeeCreateDto));
     }
 
     @GetMapping("/getById")

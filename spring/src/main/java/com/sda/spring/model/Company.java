@@ -1,6 +1,4 @@
 package com.sda.spring.model;
-
-
 import javax.persistence.*;
 
 @Entity

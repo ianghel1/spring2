@@ -1,6 +1,7 @@
 package com.sda.spring.config;
 
 import com.sda.spring.components.CustomFaker;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,5 +19,10 @@ public class AppConfig {
 //    public CustomFaker customFaker(){
 //        return new CustomFaker();
 //    }
+
+    @Bean
+    public ModelMapper modelMapper(){
+        return new ModelMapper();
+    }
 
 }

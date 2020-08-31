@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/v1/employees")
+@ControllerAdvice
 public class EmployeeController {
 
     @Autowired
@@ -41,6 +43,7 @@ public class EmployeeController {
     public void faker() {
         employeeService.saveAll(customFaker.createDummyEmployeeList());
     }
+
 
     @GetMapping("/findByName")
     public ResponseEntity<List<Employee>> getByName(

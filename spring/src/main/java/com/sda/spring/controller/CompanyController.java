@@ -2,12 +2,15 @@ package com.sda.spring.controller;
 
 
 import com.sda.spring.components.CustomFaker;
+import com.sda.spring.dto.CompanyCreateDto;
+import com.sda.spring.dto.CompanyInfoDto;
 import com.sda.spring.model.Company;
 import com.sda.spring.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,9 +24,10 @@ public class CompanyController {
     private CustomFaker customFaker;
 
     @PostMapping("/save")
-    public ResponseEntity<Company> create(@RequestBody Company company) {
+    public ResponseEntity<CompanyInfoDto> create(@Valid @RequestBody CompanyCreateDto companyCreateDto) {
 
-        return ResponseEntity.ok(companyService.create(company));
+
+        return ResponseEntity.ok(companyService.create(companyCreateDto));
     }
 
     @GetMapping("/getById")

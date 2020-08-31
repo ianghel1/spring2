@@ -1,9 +1,11 @@
 package com.sda.spring.service.impl;
 
+import com.sda.spring.dto.CompanyInfoDto;
 import com.sda.spring.model.Company;
-import com.sda.spring.model.Employee;
+import com.sda.spring.dto.CompanyCreateDto;
 import com.sda.spring.repository.CompanyRepository;
 import com.sda.spring.service.CompanyService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,13 +19,27 @@ import java.util.Optional;
 @Service
 public class CompanyServiceImpl implements CompanyService {
 
-    @Autowired
-    private CompanyRepository companyRepository;
+    private final CompanyRepository companyRepository;
 
+    private final ModelMapper modelMapper;
+
+    /**
+     * When constructor is called, CompanyRepo and ModelMapper is instantiated, therefore there's no use of @Autowired
+     */
+
+    @Autowired
+    public CompanyServiceImpl(CompanyRepository companyRepository, ModelMapper modelMapper) {
+        this.companyRepository = companyRepository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
-    public Company create(Company company) {
-        return companyRepository.save(company);
+    public CompanyInfoDto create(CompanyCreateDto companyCreateDto) {
+        Company entity = modelMapper.map(companyCreateDto, Company.class);
+        Company resultAfterSave = companyRepository.save(entity);
+
+        CompanyInfoDto response = modelMapper.map(resultAfterSave, CompanyInfoDto.class);
+        return response;
     }
 
     @Override
@@ -41,6 +57,8 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> getAll(Integer pageNo, Integer pageSize, String sortBy) {
         Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         Page<Company> pageResult = companyRepository.findAll(pageable);
-     return pageResult.getContent();
+        return pageResult.getContent();
     }
+
+
 }

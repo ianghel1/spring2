@@ -1,5 +1,6 @@
 package com.sda.spring.service.impl;
 
+import com.sda.spring.exception.EmployeeNotFoundException;
 import com.sda.spring.model.Employee;
 import com.sda.spring.repository.EmployeeRepository;
 import com.sda.spring.service.EmployeeService;
@@ -40,8 +41,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getByName(String firstName, String lastName) {
+        List<Employee> results = employeeRepository.findAllByFirstNameAndLastName(firstName, lastName);
 
-        return employeeRepository.findAllByFirstNameAndLastName(firstName, lastName);
+
+        if (results.isEmpty()) {
+            throw new EmployeeNotFoundException("Employee with " + firstName + " " + lastName + " not found.");
+        }
+
+        return results;
     }
 
 

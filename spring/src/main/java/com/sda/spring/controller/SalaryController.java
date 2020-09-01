@@ -43,4 +43,9 @@ public class SalaryController {
         return ResponseEntity.ok(salaryService.getAll(pageNo, pageSize, sortBy));
     }
 
+    @GetMapping("/populate")
+    public void faker() {
+        salaryService.saveAll(customFaker.createDummySalaryList());
+    }
+
 }

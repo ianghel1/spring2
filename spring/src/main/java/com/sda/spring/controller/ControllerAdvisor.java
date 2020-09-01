@@ -1,15 +1,15 @@
 package com.sda.spring.controller;
 
+import com.sda.spring.exception.CompanyNotFoundException;
 import com.sda.spring.exception.EmployeeNotFoundException;
-import com.sun.org.apache.regexp.internal.RE;
+import com.sda.spring.exception.ProjectNotFoundException;
+import com.sda.spring.exception.SalaryNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,6 +23,33 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         Map<String, Object> body  = new LinkedHashMap<>();
         body.put("Timestamp: ", LocalDateTime.now());
         body.put("Message:", exception.getLocalizedMessage());
+
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(CompanyNotFoundException.class)
+    public ResponseEntity<Object> handleCompanyNotFoundException(CompanyNotFoundException exception){
+    Map<String, Object> body = new LinkedHashMap<>();
+    body.put("Timestamp: ", LocalDateTime.now());
+    body.put("Message: ", exception.getLocalizedMessage());
+
+    return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ProjectNotFoundException.class)
+    public ResponseEntity<Object> handleProjectNotFoundException(ProjectNotFoundException exception){
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("Timestamp: ", LocalDateTime.now());
+        body.put("Message: ", exception.getLocalizedMessage());
+
+        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(SalaryNotFoundException.class)
+    public ResponseEntity<Object> handleSalayNotFoundException(SalaryNotFoundException exception){
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("Timestamp: ", LocalDateTime.now());
+        body.put("Message: ", exception.getLocalizedMessage());
 
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }

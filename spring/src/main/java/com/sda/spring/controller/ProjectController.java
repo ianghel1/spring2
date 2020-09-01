@@ -43,6 +43,11 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getAll(pageNo, pageSize, sortBy));
     }
 
+    @GetMapping("/populate")
+    public void faker() {
+        projectService.saveAll(customFaker.createDummyProjectList());
+    }
+
 
 
 

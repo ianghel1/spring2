@@ -44,6 +44,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Company> saveAll(List<Company> companyList) {
+
         return (List<Company>) companyRepository.saveAll(companyList);
     }
 

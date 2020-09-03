@@ -1,7 +1,6 @@
 package com.sda.spring.dto;
 
 
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

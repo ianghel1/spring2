@@ -2,12 +2,16 @@ package com.sda.spring.controller;
 
 
 import com.sda.spring.components.CustomFaker;
+import com.sda.spring.dto.ProjectCreateDto;
+import com.sda.spring.dto.ProjectInfoDto;
+import com.sda.spring.model.Employee;
 import com.sda.spring.model.Project;
 import com.sda.spring.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,8 +29,8 @@ public class ProjectController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Project> create(@RequestBody Project project){
-        return ResponseEntity.ok(projectService.create(project));
+    public ResponseEntity<ProjectInfoDto> create(@Valid @RequestBody ProjectCreateDto projectCreateDto){
+        return ResponseEntity.ok(projectService.create(projectCreateDto));
     }
 
     @GetMapping("/getById")
@@ -49,7 +53,12 @@ public class ProjectController {
     }
 
 
+    @GetMapping("/findByName")
+    public ResponseEntity<List<Project>> getByName(
+            @RequestParam String name) {
 
+        return ResponseEntity.ok(projectService.getByName(name));
+    }
 
 
 }

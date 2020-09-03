@@ -1,8 +1,11 @@
 package com.sda.spring.service.impl;
 
+import com.sda.spring.dto.ProjectCreateDto;
+import com.sda.spring.dto.ProjectInfoDto;
 import com.sda.spring.model.Project;
 import com.sda.spring.repository.ProjectRepository;
 import com.sda.spring.service.ProjectService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,15 +20,21 @@ import java.util.Optional;
 public class ProjectServiceImpl implements ProjectService {
 
     private ProjectRepository projectRepository;
+    private ModelMapper modelMapper;
 
     @Autowired
-    public ProjectServiceImpl(ProjectRepository projectRepository){
+    public ProjectServiceImpl(ProjectRepository projectRepository, ModelMapper modelMapper) {
         this.projectRepository = projectRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public Project create(Project project) {
-        return projectRepository.save(project);
+    public ProjectInfoDto create(ProjectCreateDto projectCreateDto) {
+        Project entity = modelMapper.map(projectCreateDto, Project.class);
+        Project resultAfterSave = projectRepository.save(entity);
+
+        ProjectInfoDto response = modelMapper.map(resultAfterSave, ProjectInfoDto.class);
+        return response;
     }
 
     @Override
@@ -44,5 +53,11 @@ public class ProjectServiceImpl implements ProjectService {
         Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         Page<Project> pageResult = projectRepository.findAll(pageable);
         return pageResult.getContent();
+    }
+
+    @Override
+    public List<Project> getByName(String name) {
+        List<Project> results = projectRepository.findByProjectName(name);
+        return results;
     }
 }

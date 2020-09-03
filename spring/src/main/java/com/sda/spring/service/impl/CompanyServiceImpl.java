@@ -61,5 +61,11 @@ public class CompanyServiceImpl implements CompanyService {
         return pageResult.getContent();
     }
 
+    @Override
+    public List<Company> getByName(String name) {
+        List<Company> results = companyRepository.findByName(name);
+        return results;
+    }
+
 
 }

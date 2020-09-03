@@ -1,20 +1,29 @@
 package com.sda.spring.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class EmployeeCreateDto {
 
-
+@NotBlank
     private String firstName;
 
+@NotBlank
     private String lastName;
 
+@NotBlank
     private String email;
 
+@NotBlank
     private String address;
 
+@NotBlank
     private String phoneNumber;
 
+@NotNull
     private Long personalNumericCode;
 
+@NotNull
     private Boolean isHired;
 
     public String getFirstName() {

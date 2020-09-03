@@ -2,12 +2,15 @@ package com.sda.spring.controller;
 
 
 import com.sda.spring.components.CustomFaker;
+import com.sda.spring.dto.SalaryCreateDto;
+import com.sda.spring.dto.SalaryInfoDto;
 import com.sda.spring.model.Salary;
 import com.sda.spring.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,8 +29,8 @@ public class SalaryController {
 
 
     @PostMapping("/save")
-    public ResponseEntity<Salary> create(@RequestBody Salary salary) {
-        return ResponseEntity.ok(salaryService.create(salary));
+    public ResponseEntity<SalaryInfoDto> create(@Valid @RequestBody SalaryCreateDto salaryCreateDto) {
+        return ResponseEntity.ok(salaryService.create(salaryCreateDto));
     }
 
     @GetMapping("/getById")
@@ -47,5 +50,12 @@ public class SalaryController {
     public void faker() {
         salaryService.saveAll(customFaker.createDummySalaryList());
     }
+
+    @GetMapping("/findByValue")
+    public ResponseEntity<List<Salary>> getByValue(
+            @RequestParam Double value) {
+        return ResponseEntity.ok(salaryService.getByValue(value));
+    }
+
 
 }

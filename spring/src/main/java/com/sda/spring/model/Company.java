@@ -1,5 +1,7 @@
 package com.sda.spring.model;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "company")
@@ -23,6 +25,13 @@ public class Company {
 
     @Column
     private String email;
+
+    // owning side
+    @OneToMany(
+            mappedBy = "company",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Employee> employeeList = new ArrayList<>();
 
     public Long getRegistrationNumber() {
         return registrationNumber;
@@ -72,5 +81,13 @@ public class Company {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 }

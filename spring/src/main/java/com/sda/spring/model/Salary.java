@@ -20,6 +20,13 @@ public class Salary {
     @Column
     private String currency;
 
+    @OneToOne(
+            mappedBy = "salary",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            optional = false)
+    private Employee employee;
+
     public Integer getId() {
         return id;
     }
@@ -42,5 +49,13 @@ public class Salary {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

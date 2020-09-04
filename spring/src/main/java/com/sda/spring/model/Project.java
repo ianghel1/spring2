@@ -1,6 +1,8 @@
 package com.sda.spring.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "project")
@@ -13,6 +15,10 @@ public class Project {
 
     @Column
     private String projectName;
+
+    @ManyToMany(mappedBy = "projects")
+    private List<Employee> employees = new ArrayList<>();
+
 
     public Integer getId() {
         return id;

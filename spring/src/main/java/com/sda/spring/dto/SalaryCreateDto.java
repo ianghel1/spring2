@@ -1,11 +1,11 @@
 package com.sda.spring.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class SalaryCreateDto {
 
-    @NotNull
+    @Min(500)
+    @Max(2000)
     private Double value;
 
     @NotBlank

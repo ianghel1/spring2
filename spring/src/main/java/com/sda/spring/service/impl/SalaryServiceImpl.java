@@ -43,10 +43,13 @@ public class SalaryServiceImpl implements SalaryService {
 
     @Override
     public List<Salary> saveAll(List<Salary> salaryList) {
-        return ((List<Salary>) salaryRepository.findAll())
-                .stream()
-                .map(obj -> modelMapper.map(obj, Salary.class))
-                .collect(Collectors.toList());
+
+
+        return (List<Salary>) salaryRepository.saveAll(salaryList);
+//        return ((List<Salary>) salaryRepository.findAll())
+//                .stream()
+//                .map(obj -> modelMapper.map(obj, Salary.class))
+//                .collect(Collectors.toList());
     }
 
     @Override

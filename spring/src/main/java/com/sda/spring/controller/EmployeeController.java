@@ -28,13 +28,13 @@ public class EmployeeController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<EmployeeInfoDto> create(@Valid @RequestBody  EmployeeCreateDto employeeCreateDto) {
+    public ResponseEntity<EmployeeInfoDto> create(@Valid @RequestBody EmployeeCreateDto employeeCreateDto) {
         return ResponseEntity.ok(employeeService.create(employeeCreateDto));
     }
 
     @GetMapping("/getById")
-    public ResponseEntity<Employee> getById(@RequestParam Integer id) {
-        return ResponseEntity.ok(employeeService.getById(id));
+    public ResponseEntity<EmployeeInfoDto> getById(@RequestParam Integer id) {
+        return ResponseEntity.ok(employeeService.getById2(id));
     }
 
     @GetMapping("/getAll")

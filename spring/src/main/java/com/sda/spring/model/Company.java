@@ -1,11 +1,18 @@
 package com.sda.spring.model;
+
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "company")
 public class Company {
+
+    //id, name, adress, phoneNumber, registrationNumber,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +22,10 @@ public class Company {
     private String name;
 
     @Column
-    private String address;
+    private String adress;
 
     @Column
-    private String phoneNumber;
+    private String phoneNumberCompany;
 
     @Column
     private Long registrationNumber;
@@ -26,19 +33,23 @@ public class Company {
     @Column
     private String email;
 
-    // owning side
-    @OneToMany(
-            mappedBy = "company",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<Employee> employeeList = new ArrayList<>();
+    @OneToMany(mappedBy = "company")
+    private List<Employee> employee;
 
-    public Long getRegistrationNumber() {
-        return registrationNumber;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+
+
+
+    public List<Employee> getEmployee() {
+        return employee;
     }
 
-    public void setRegistrationNumber(Long registrationNumber) {
-        this.registrationNumber = registrationNumber;
+    public void setEmployee(List<Employee> employee) {
+        this.employee = employee;
     }
 
     public Integer getId() {
@@ -57,23 +68,29 @@ public class Company {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNumberCompany() {
+        return phoneNumberCompany;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumberCompany(String phoneNumberCompany) {
+        this.phoneNumberCompany = phoneNumberCompany;
     }
 
+    public Long getRegistrationNumber() {
+        return registrationNumber;
+    }
 
+    public void setRegistrationNumber(Long registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
 
     public String getEmail() {
         return email;
@@ -83,11 +100,19 @@ public class Company {
         this.email = email;
     }
 
-    public List<Employee> getEmployeeList() {
-        return employeeList;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

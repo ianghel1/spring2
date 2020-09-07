@@ -1,6 +1,5 @@
 package com.sda.spring.service.impl;
 
-import com.sda.spring.dto.CompanyInfoDto;
 import com.sda.spring.dto.SalaryCreateDto;
 import com.sda.spring.dto.SalaryInfoDto;
 import com.sda.spring.model.Salary;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class SalaryServiceImpl implements SalaryService {

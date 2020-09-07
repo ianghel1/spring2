@@ -1,84 +1,70 @@
 package com.sda.spring.dto;
 
-import javax.validation.constraints.NotBlank;
+import com.sda.spring.model.Company;
+
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class EmployeeCreateDto {
 
-@NotBlank
+    //aici  nu avem nevoie de id, deoarece acesta se genereaza in baza de date, nu in aplicatie
+    @NotEmpty
     private String firstName;
 
-@NotBlank
+    @NotEmpty
     private String lastName;
 
-@NotBlank
+    @NotEmpty
     private String email;
 
-@NotBlank
+    @NotEmpty
     private String address;
 
-@NotBlank
+    @NotEmpty
     private String phoneNumber;
 
-@NotNull
+    @NotNull
     private Long personalNumericCode;
 
-@NotNull
-    private Boolean isHired;
 
-    public String getFirstName() {
-        return firstName;
+    private boolean isHired;
+
+    private Company company;
+
+    public Company getCompany() {
+        return company;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
+    public String getFirstName() {   return firstName;   }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public void setFirstName(String firstName) {     this.firstName = firstName;    }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getLastName() {        return lastName;    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setLastName(String lastName) {        this.lastName = lastName;    }
 
-    public String getAddress() {
-        return address;
-    }
+    public String getEmail() {        return email;    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public void setEmail(String email) {        this.email = email;    }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+    public String getAddress() {        return address;    }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    public void setAddress(String address) {        this.address = address;    }
 
-    public Long getPersonalNumericCode() {
-        return personalNumericCode;
-    }
+    public String getPhoneNumber() {        return phoneNumber;    }
 
-    public void setPersonalNumericCode(Long personalNumericCode) {
-        this.personalNumericCode = personalNumericCode;
-    }
+    public void setPhoneNumber(String phoneNumber) {    this.phoneNumber = phoneNumber;    }
 
-    public Boolean getHired() {
-        return isHired;
-    }
+    public Long getPersonalNumericCode() {        return personalNumericCode;    }
 
-    public void setHired(Boolean hired) {
-        isHired = hired;
-    }
+    public void setPersonalNumericCode(Long personalNumericCode) {        this.personalNumericCode = personalNumericCode;    }
+
+    public boolean getHired() {        return isHired;    }
+
+    public void setHired(boolean hired) {        isHired = hired;    }
+
 }

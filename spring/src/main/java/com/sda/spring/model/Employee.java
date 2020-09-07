@@ -27,14 +27,14 @@ public class Employee {
     @Column
     private String phoneNumber;
 
-    @Column
+    @Column(unique = true)
     private Long personalNumericCode;
 
     @Column
-    private Boolean isHired;
+    private boolean isHired;
 
     // non owning side
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id")
     private Company company;
 
@@ -100,11 +100,11 @@ public class Employee {
         this.personalNumericCode = personalNumericCode;
     }
 
-    public Boolean getHired() {
+    public boolean isHired() {
         return isHired;
     }
 
-    public void setHired(Boolean hired) {
+    public void setHired(boolean hired) {
         isHired = hired;
     }
 

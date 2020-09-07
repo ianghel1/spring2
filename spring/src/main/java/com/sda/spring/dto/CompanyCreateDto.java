@@ -1,29 +1,30 @@
 package com.sda.spring.dto;
 
-
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
 
 public class CompanyCreateDto {
 
-    @NotBlank
+
+  //aici  nu avem nevoie de id, deoarece acesta se genereaza in baza de date, nu in aplicatie
+
+    @NotEmpty
     private String name;
 
-    @NotBlank
-    private String address;
+    @NotEmpty
+    private String adress;
 
-    @NotBlank
-    private String phoneNumber;
+    @NotEmpty
+    private String phoneNumberCompany;
 
     @NotNull
-    @Max(value = 10)
-
+    // @Min(value=100000000)
     private Long registrationNumber;
 
     @NotBlank
     private String email;
-
 
 
 
@@ -35,20 +36,20 @@ public class CompanyCreateDto {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNumberCompany() {
+        return phoneNumberCompany;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumberCompany(String phoneNumberCompany) {
+        this.phoneNumberCompany = phoneNumberCompany;
     }
 
     public Long getRegistrationNumber() {

@@ -1,24 +1,49 @@
 package com.sda.spring.dto;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 public class CompanyInfoDto {
 
-    private Long id;
+    private Integer id;
 
     private String name;
 
-    private String address;
+    private String adress;
 
-    private String phoneNumber;
+    private String phoneNumberCompany;
 
     private Long registrationNumber;
 
     private String email;
 
-    public Long getId() {
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    private List<EmployeeSummaryDto> employeeList;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -30,20 +55,20 @@ public class CompanyInfoDto {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNumberCompany() {
+        return phoneNumberCompany;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumberCompany(String phoneNumberCompany) {
+        this.phoneNumberCompany = phoneNumberCompany;
     }
 
     public Long getRegistrationNumber() {
@@ -60,5 +85,13 @@ public class CompanyInfoDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<EmployeeSummaryDto> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<EmployeeSummaryDto> employeeList) {
+        this.employeeList = employeeList;
     }
 }

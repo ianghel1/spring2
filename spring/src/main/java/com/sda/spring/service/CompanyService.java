@@ -7,7 +7,7 @@ import com.sda.spring.model.Company;
 import java.util.List;
 
 public interface CompanyService {
-    CompanyInfoDto create(CompanyCreateDto companyCreateDto);
+    CompanyInfoDto create(CompanyCreateDto companyCreateDto, String createdBy);
 
     List<Company> saveAll(List<Company> companyList);
 

@@ -21,6 +21,8 @@ public class CompanyInfoDto {
 
     private LocalDateTime updatedAt;
 
+    private String createdBy;
+
     private List<EmployeeSummaryDto> employeeList;
 
     public LocalDateTime getCreatedAt() {
@@ -93,5 +95,13 @@ public class CompanyInfoDto {
 
     public void setEmployeeList(List<EmployeeSummaryDto> employeeList) {
         this.employeeList = employeeList;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 }

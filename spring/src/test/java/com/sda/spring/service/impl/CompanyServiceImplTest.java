@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
 
@@ -90,7 +89,7 @@ class CompanyServiceImplTest {
         Mockito.when(modelMapper.map(companyCreateDto, Company.class)).thenReturn(company);
         Mockito.when(modelMapper.map(company, CompanyInfoDto.class)).thenReturn(companyInfoDto);
 
-        CompanyInfoDto result = companyService.create(companyCreateDto);
+        CompanyInfoDto result = companyService.create(companyCreateDto, "test");
 
         Mockito.verify(companyRepository, Mockito.times(1)).save(company);
 

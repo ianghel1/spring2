@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.security.Principal;
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v1/companies") 
+@RequestMapping("/api/v1/companies")
 @ControllerAdvice
 public class CompanyController {
 
@@ -28,8 +29,9 @@ public class CompanyController {
 
 
     @PostMapping("/save")
-    public ResponseEntity<CompanyInfoDto> create(@Valid @RequestBody CompanyCreateDto companyCreateDto) {
-        return ResponseEntity.ok(companyService.create(companyCreateDto));
+    public ResponseEntity<CompanyInfoDto> create(@Valid @RequestBody CompanyCreateDto companyCreateDto, Principal principal) {
+        String userName = principal != null ? principal.getName() : "unauthorized person";
+        return ResponseEntity.ok(companyService.create(companyCreateDto, userName));
     }
 
     @GetMapping("/findByEmployee")
@@ -39,7 +41,7 @@ public class CompanyController {
     }
 
     @GetMapping("/findByEmployeeId/{id}")
-    public ResponseEntity<CompanyInfoDto> findByEmployeeId(@PathVariable @NotNull Integer id){
+    public ResponseEntity<CompanyInfoDto> findByEmployeeId(@PathVariable @NotNull Integer id) {
         return ResponseEntity.ok(companyService.findByEmployeeId(id));
     }
 

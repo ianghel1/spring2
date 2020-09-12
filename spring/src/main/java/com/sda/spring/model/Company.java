@@ -3,6 +3,7 @@ package com.sda.spring.model;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -41,6 +42,10 @@ public class Company {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @CreatedBy
+    private String createdBy;
+
 
 
 
@@ -114,5 +119,13 @@ public class Company {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 }

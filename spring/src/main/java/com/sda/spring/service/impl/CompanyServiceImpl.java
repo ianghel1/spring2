@@ -41,8 +41,9 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyInfoDto create(CompanyCreateDto companyCreateDto) {
+    public CompanyInfoDto create(CompanyCreateDto companyCreateDto, String createdBy) {
         Company entity = modelMapper.map(companyCreateDto, Company.class);
+        entity.setCreatedBy(createdBy);
 
         Company resultAfterSave = companyRepository.save(entity);
         CompanyInfoDto response = modelMapper.map(resultAfterSave, CompanyInfoDto.class);

@@ -20,6 +20,8 @@ public class EmployeeInfoDto {
 
     private CompanySummaryDto companySummaryDto;
 
+    private SalarySummaryDto salarySummaryDto;
+
 
     public Integer getId() {
         return id;
@@ -61,5 +63,13 @@ public class EmployeeInfoDto {
 
     public void setCompanySummaryDto(CompanySummaryDto companySummaryDto) {
         this.companySummaryDto = companySummaryDto;
+    }
+
+    public SalarySummaryDto getSalarySummaryDto() {
+        return salarySummaryDto;
+    }
+
+    public void setSalarySummaryDto(SalarySummaryDto salarySummaryDto) {
+        this.salarySummaryDto = salarySummaryDto;
     }
 }

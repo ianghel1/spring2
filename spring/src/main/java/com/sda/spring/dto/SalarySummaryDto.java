@@ -1,12 +1,21 @@
 package com.sda.spring.dto;
 
-public class SalaryCreateDto {
+public class SalarySummaryDto {
 
+
+    private Integer id;
 
     private Double value;
 
-
     private String currency;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Double getValue() {
         return value;

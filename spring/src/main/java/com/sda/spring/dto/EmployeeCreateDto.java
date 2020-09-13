@@ -1,6 +1,7 @@
 package com.sda.spring.dto;
 
 import com.sda.spring.model.Company;
+import com.sda.spring.model.Salary;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -28,6 +29,20 @@ public class EmployeeCreateDto {
 
 
     private boolean isHired;
+
+    private Salary salary;
+
+    public boolean isHired() {
+        return isHired;
+    }
+
+    public Salary getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Salary salary) {
+        this.salary = salary;
+    }
 
     private Company company;
 

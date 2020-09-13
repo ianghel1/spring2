@@ -1,9 +1,6 @@
 package com.sda.spring.service.impl;
 
-import com.sda.spring.dto.CompanySummaryDto;
-import com.sda.spring.dto.EmployeeCreateDto;
-import com.sda.spring.dto.EmployeeInfoDto;
-import com.sda.spring.dto.SalarySummaryDto;
+import com.sda.spring.dto.*;
 import com.sda.spring.exception.EmployeeNotFoundException;
 import com.sda.spring.model.Employee;
 import com.sda.spring.repository.EmployeeRepository;
@@ -45,6 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         response.setCompanySummaryDto(modelMapper.map(resultAfterSave.getCompany(), CompanySummaryDto.class));
         response.setSalarySummaryDto(modelMapper.map(resultAfterSave.getSalary(), SalarySummaryDto.class));
+//todo make Employee able to have project
         return response;
     }
 

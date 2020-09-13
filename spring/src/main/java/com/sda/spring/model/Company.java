@@ -23,7 +23,7 @@ public class Company {
     private String name;
 
     @Column
-    private String adress;
+    private String address;
 
     @Column
     private String phoneNumberCompany;
@@ -73,12 +73,12 @@ public class Company {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumberCompany() {

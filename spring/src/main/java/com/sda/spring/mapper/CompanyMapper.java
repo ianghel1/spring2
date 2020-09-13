@@ -11,7 +11,7 @@ public class CompanyMapper {
         CompanyInfoDto companyInfoDto = new CompanyInfoDto();
         companyInfoDto.setId(company.getId());
         companyInfoDto.setName(company.getName());
-        companyInfoDto.setAdress(company.getAdress());
+        companyInfoDto.setAddress(company.getAddress());
         companyInfoDto.setEmail(company.getEmail());
         companyInfoDto.setPhoneNumberCompany(company.getPhoneNumberCompany());
         companyInfoDto.setRegistrationNumber(company.getRegistrationNumber());

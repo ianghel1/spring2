@@ -14,7 +14,7 @@ public class CompanyCreateDto {
     private String name;
 
     @NotEmpty
-    private String adress;
+    private String address;
 
     @NotEmpty
     private String phoneNumberCompany;
@@ -36,12 +36,12 @@ public class CompanyCreateDto {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumberCompany() {

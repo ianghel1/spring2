@@ -1,5 +1,9 @@
 package com.sda.spring.dto;
 
+import com.sda.spring.model.Project;
+
+import java.util.List;
+
 public class EmployeeInfoDto {
 
     private Integer id;
@@ -22,6 +26,15 @@ public class EmployeeInfoDto {
 
     private SalarySummaryDto salarySummaryDto;
 
+    private List<ProjectSummaryDto> projects;
+
+    public List<ProjectSummaryDto> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<ProjectSummaryDto> projects) {
+        this.projects = projects;
+    }
 
     public Integer getId() {
         return id;

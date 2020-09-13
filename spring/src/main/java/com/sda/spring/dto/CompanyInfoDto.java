@@ -9,7 +9,7 @@ public class CompanyInfoDto {
 
     private String name;
 
-    private String adress;
+    private String address;
 
     private String phoneNumberCompany;
 
@@ -57,12 +57,12 @@ public class CompanyInfoDto {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumberCompany() {

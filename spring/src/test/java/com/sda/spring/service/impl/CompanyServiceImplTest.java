@@ -51,21 +51,21 @@ class CompanyServiceImplTest {
 
         companyCreateDto = new CompanyCreateDto();
         companyCreateDto.setName(NAME);
-        companyCreateDto.setAdress(ADDRESS);
+        companyCreateDto.setAddress(ADDRESS);
         companyCreateDto.setEmail(EMAIL);
         companyCreateDto.setPhoneNumberCompany(PHONE);
         companyCreateDto.setRegistrationNumber(REGISTRATION_NR);
 
         company = new Company();
         company.setName(NAME);
-        company.setAdress(ADDRESS);
+        company.setAddress(ADDRESS);
         company.setEmail(EMAIL);
         company.setPhoneNumberCompany(PHONE);
         company.setRegistrationNumber(REGISTRATION_NR);
 
         companyInfoDto = new CompanyInfoDto();
         companyInfoDto.setName(NAME);
-        companyInfoDto.setAdress(ADDRESS);
+        companyInfoDto.setAddress(ADDRESS);
         companyInfoDto.setEmail(EMAIL);
         companyInfoDto.setPhoneNumberCompany(PHONE);
         companyInfoDto.setRegistrationNumber(REGISTRATION_NR);

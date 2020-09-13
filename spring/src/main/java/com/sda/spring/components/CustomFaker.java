@@ -40,7 +40,7 @@ public class CustomFaker {
         for (int i = 0; i < 100; i++) {
             Company company = new Company();
             company.setName(faker.company().name());
-            company.setAdress(faker.address().fullAddress());
+            company.setAddress(faker.address().fullAddress());
             company.setEmail(faker.bothify("??????#?#@gmail.com"));
             company.setPhoneNumberCompany(faker.phoneNumber().phoneNumber());
             company.setRegistrationNumber(faker.number().randomNumber(8, true));
